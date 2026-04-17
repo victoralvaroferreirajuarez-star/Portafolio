@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx claude-code-templates@latest --skill business-marketing/seo-optimizer)",
+      "Bash(npx claude-code-templates@latest --skill development/senior-backend)",
+      "Bash(npx claude-code-templates@latest --skill development/senior-frontend)",
+      "Bash(npx create-next-app@latest portfolio --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Bash(where rtk:*)",
+      "Bash(where cargo:*)",
+      "Bash(gh release:*)",
+      "Bash(where gh:*)",
+      "Bash(powershell.exe -Command \"gh release view --repo rtk-ai/rtk --json assets --jq '.assets[].name'\")",
+      "WebFetch(domain:api.github.com)",
+      "Bash(curl -L -o /tmp/rtk.zip \"https://github.com/rtk-ai/rtk/releases/download/v0.35.0/rtk-x86_64-pc-windows-msvc.zip\")",
+      "Bash(mkdir -p /c/Users/alvar/AppData/Local/rtk)",
+      "Bash(unzip -o /tmp/rtk.zip -d /c/Users/alvar/AppData/Local/rtk)",
+      "Read(//c/Users/alvar/AppData/Local/**)",
+      "Bash(export PATH=\"/c/Users/alvar/AppData/Local/rtk:$PATH\")",
+      "Bash(rtk --version)",
+      "Bash(rtk init:*)",
+      "Bash(mkdir -p ~/.claude/skills/frontend-design)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md\" -o SKILL.md)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/LICENSE.txt\" -o LICENSE.txt)",
+      "Bash(ls -d ~/.claude/skills/*/)",
+      "Bash(rtk gh:*)",
+      "Bash(gh repo:*)",
+      "Bash(git clone:*)",
+      "Bash(npx next:*)",
+      "Bash(git config:*)"
+    ]
+  }
+}

@@ -89,6 +89,24 @@ export function SXSLogo({ size = 40 }: { size?: number }) {
   );
 }
 
+// BananitaStore — Adopt Me pet marketplace.
+export function BananitaLogo({ size = 40 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="BananitaStore">
+      <defs>
+        <linearGradient id="bnn-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#FFE066" />
+          <stop offset="100%" stopColor="#F5B700" />
+        </linearGradient>
+      </defs>
+      <rect x="2" y="2" width="96" height="96" rx="24" fill="url(#bnn-bg)" />
+      <text x="50" y="64" textAnchor="middle" fontSize="46">
+        🍌
+      </text>
+    </svg>
+  );
+}
+
 /* ---------- Social icons ---------- */
 
 export function GitHubIcon({ size = 17 }: { size?: number }) {

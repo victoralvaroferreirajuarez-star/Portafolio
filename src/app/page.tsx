@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <LanguageProvider>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <Desktop />
         <About />

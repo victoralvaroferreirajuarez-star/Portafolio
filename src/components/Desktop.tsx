@@ -16,6 +16,7 @@ import {
   JuvakLogo,
   FPTLogo,
   SXSLogo,
+  BananitaLogo,
   GitHubIcon,
   DiscordIcon,
   InstagramIcon,
@@ -23,7 +24,7 @@ import {
 
 const DISCORD_USER = "avalouw.";
 
-type WindowId = "sxs" | "juvak" | "fpt";
+type WindowId = "sxs" | "juvak" | "fpt" | "bananita";
 type WinState = "open" | "min" | "closed";
 
 type Venture = {
@@ -92,6 +93,20 @@ const VENTURES: Venture[] = [
     web: { label: "futbolparatodos.store", href: "https://futbolparatodos.store" },
     ig: { label: "@fpt.store", href: "https://www.instagram.com/fpt.store" },
     pos: { left: "32%", top: "36%" },
+  },
+  {
+    id: "bananita",
+    app: "bananita.app",
+    name: "BananitaStore",
+    logo: <BananitaLogo size={44} />,
+    dockLogo: <BananitaLogo size={40} />,
+    role: { es: "Founder · Live", en: "Founder · Live" },
+    desc: {
+      es: "Marketplace de mascotas de Adopt Me (Roblox). Compra, vende y calcula el valor de tus pets.",
+      en: "Adopt Me (Roblox) pet marketplace. Buy, sell and calculate your pets' value.",
+    },
+    web: { label: "bananitastore.shop", href: "https://www.bananitastore.shop" },
+    pos: { left: "63%", top: "47%" },
   },
 ];
 
@@ -372,8 +387,9 @@ export default function Desktop() {
     sxs: "open",
     juvak: "open",
     fpt: "open",
+    bananita: "open",
   });
-  const [zOrder, setZOrder] = useState<WindowId[]>(["sxs", "fpt", "juvak"]);
+  const [zOrder, setZOrder] = useState<WindowId[]>(["sxs", "bananita", "fpt", "juvak"]);
   const [maximized, setMaximized] = useState<WindowId | null>(null);
   const [copied, setCopied] = useState(false);
 

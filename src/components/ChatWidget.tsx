@@ -158,7 +158,7 @@ export default function ChatWidget() {
               duration: 0.22,
               ease: [0.6, 0, 0.05, 1] as [number, number, number, number],
             }}
-            className="flex flex-col bg-[#0d0d0d] border border-white/10 shadow-2xl w-[320px]"
+            className="flex flex-col bg-[#0B101E] border border-white/10 shadow-2xl w-[320px]"
             style={{ borderRadius: 16, height: 460, overflow: "hidden" }}
           >
             {/* Header */}
@@ -166,18 +166,18 @@ export default function ChatWidget() {
               className="flex items-center justify-between px-4 py-3.5 flex-shrink-0"
               style={{
                 background:
-                  "linear-gradient(135deg, #A8D5C2 0%, #A8C8E8 100%)",
+                  "linear-gradient(135deg, #2563EB 0%, #1B45FF 100%)",
               }}
             >
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#1D1D1F]/50" />
-                <span className="text-sm font-semibold text-[#1D1D1F]">
+                <span className="w-2 h-2 rounded-full bg-white/60" />
+                <span className="text-sm font-semibold text-white">
                   Chat en vivo
                 </span>
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="text-[#1D1D1F]/60 hover:text-[#1D1D1F] transition-colors"
+                className="text-white/60 hover:text-white transition-colors"
                 aria-label="Cerrar chat"
               >
                 <X size={16} />
@@ -196,7 +196,7 @@ export default function ChatWidget() {
 
               {initializing ? (
                 <div className="flex justify-center py-4">
-                  <Loader2 size={16} className="animate-spin text-[#6BBF9E]" />
+                  <Loader2 size={16} className="animate-spin text-[#60A5FA]" />
                 </div>
               ) : (
                 messages.map((msg) => (
@@ -209,14 +209,14 @@ export default function ChatWidget() {
                     <div
                       className={`max-w-[78%] px-3.5 py-2 text-sm leading-relaxed ${
                         msg.sender === "visitor"
-                          ? "text-[#1D1D1F]"
+                          ? "text-white"
                           : "bg-white/10 text-white"
                       }`}
                       style={{
                         borderRadius: 12,
                         ...(msg.sender === "visitor" && {
                           background:
-                            "linear-gradient(135deg, #A8D5C2, #A8C8E8)",
+                            "linear-gradient(135deg, #2563EB, #1B45FF)",
                         }),
                       }}
                     >
@@ -242,21 +242,21 @@ export default function ChatWidget() {
                 }}
                 placeholder="Escribe un mensaje..."
                 disabled={initializing || !sessionId}
-                className="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-white placeholder-[#6E6E73] text-sm focus:outline-none focus:border-[#6BBF9E]/40 transition-colors disabled:opacity-50"
+                className="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-white placeholder-[#6E6E73] text-sm focus:outline-none focus:border-[#3B82F6]/50 transition-colors disabled:opacity-50"
               />
               <button
                 onClick={sendMessage}
                 disabled={!input.trim() || sending || !sessionId}
                 className="w-9 h-9 flex-shrink-0 rounded-full flex items-center justify-center disabled:opacity-40 transition-opacity"
                 style={{
-                  background: "linear-gradient(135deg, #A8D5C2, #A8C8E8)",
+                  background: "linear-gradient(135deg, #2563EB, #1B45FF)",
                 }}
                 aria-label="Enviar"
               >
                 {sending ? (
-                  <Loader2 size={14} className="text-[#1D1D1F] animate-spin" />
+                  <Loader2 size={14} className="text-white animate-spin" />
                 ) : (
-                  <Send size={14} className="text-[#1D1D1F]" />
+                  <Send size={14} className="text-white" />
                 )}
               </button>
             </div>
@@ -270,7 +270,7 @@ export default function ChatWidget() {
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.92 }}
         className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center"
-        style={{ background: "linear-gradient(135deg, #A8D5C2, #A8C8E8)" }}
+        style={{ background: "linear-gradient(135deg, #2563EB, #1B45FF)" }}
         aria-label="Abrir chat"
       >
         <AnimatePresence mode="wait">
@@ -282,7 +282,7 @@ export default function ChatWidget() {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.18 }}
             >
-              <X size={22} className="text-[#1D1D1F]" />
+              <X size={22} className="text-white" />
             </motion.span>
           ) : (
             <motion.span
@@ -292,7 +292,7 @@ export default function ChatWidget() {
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.18 }}
             >
-              <MessageCircle size={22} className="text-[#1D1D1F]" />
+              <MessageCircle size={22} className="text-white" />
             </motion.span>
           )}
         </AnimatePresence>

@@ -13,14 +13,14 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#111111] border-t border-white/[0.06] py-8">
+    <footer className="bg-[#05070D] border-t border-white/[0.06] py-8">
       <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <p className="text-xs text-[#6E6E73]">
+        <p className="text-xs text-[#5A6478]">
           © {year} Alvaro Ferreira. {t.rights}
         </p>
-        <p className="text-xs text-[#6E6E73]">
+        <p className="text-xs text-[#5A6478]">
           {t.made}{" "}
-          <span className="bg-gradient-to-r from-[#6BBF9E] to-[#5BA8D4] bg-clip-text text-transparent font-medium">
+          <span className="bg-gradient-to-r from-[#60A5FA] to-[#1B45FF] bg-clip-text text-transparent font-medium">
             avalito
           </span>
         </p>

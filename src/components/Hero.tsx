@@ -1,41 +1,33 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowDown, Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { GitHubIcon, DiscordIcon, InstagramIcon, JuvakLogo, FPTLogo, SXSLogo } from "@/components/icons";
 
-function GitHubIcon({ size = 17 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-    </svg>
-  );
-}
-
-function LinkedInIcon({ size = 17 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  );
-}
+const DISCORD_USER = "avalouw.";
 
 const CONTENT = {
   es: {
     greeting: "Hola, soy",
-    role: "Futuro Desarrollador de Software",
-    tagline: "Con ganas de progresar para salir adelante.",
-    cta1: "Ver Proyectos",
-    cta2: "Contactar",
+    role: "Developer & Co-Founder",
+    tagline: "Construyo software y negocios. De Perú a Barcelona — y le encuentro solución a todo.",
+    cta1: "Ver emprendimientos",
+    cta2: "Sobre mí",
     scroll: "Explorar",
+    copied: "¡Copiado!",
+    discordHint: "Copiar Discord",
   },
   en: {
     greeting: "Hi, I'm",
-    role: "Aspiring Software Developer",
-    tagline: "Eager to grow and make things happen.",
-    cta1: "View Projects",
-    cta2: "Contact",
+    role: "Developer & Co-Founder",
+    tagline: "I build software and businesses. From Peru to Barcelona — and I find a solution to everything.",
+    cta1: "View ventures",
+    cta2: "About me",
     scroll: "Explore",
+    copied: "Copied!",
+    discordHint: "Copy Discord",
   },
 };
 
@@ -48,120 +40,185 @@ const fadeUp = (delay = 0) => ({
 export default function Hero() {
   const { lang } = useLanguage();
   const t = CONTENT[lang];
+  const [copied, setCopied] = useState(false);
+
+  const copyDiscord = async () => {
+    try {
+      await navigator.clipboard.writeText(DISCORD_USER);
+    } catch {
+      // clipboard unavailable — the tooltip still shows the username
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+
+  const socialBtn =
+    "p-3 rounded-full border border-white/10 text-[#8A93A6] hover:text-white hover:border-[#3B82F6]/60 hover:bg-[#3B82F6]/10 transition-all duration-200 hover:scale-110 active:scale-95";
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#05070D]"
     >
-      {/* Gradient blobs */}
+      {/* Blue gradient blobs */}
       <motion.div
-        className="absolute top-[-8%] right-[-4%] w-[520px] h-[520px] rounded-full pointer-events-none"
+        className="absolute top-[-10%] right-[-6%] w-[560px] h-[560px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle at center, rgba(168,213,194,0.45), transparent 68%)",
+          background: "radial-gradient(circle at center, rgba(27,69,255,0.22), transparent 68%)",
         }}
-        animate={{ x: [0, 25, 0], y: [0, -18, 0], scale: [1, 1.04, 1] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ x: [0, 25, 0], y: [0, -18, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-[-6%] left-[-4%] w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute bottom-[-8%] left-[-6%] w-[640px] h-[640px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle at center, rgba(168,200,232,0.38), transparent 68%)",
+          background: "radial-gradient(circle at center, rgba(59,130,246,0.16), transparent 68%)",
         }}
         animate={{ x: [0, -18, 0], y: [0, 22, 0], scale: [1, 1.06, 1] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
       />
       <motion.div
-        className="absolute top-[42%] left-[28%] w-[320px] h-[320px] rounded-full pointer-events-none"
+        className="absolute top-[38%] left-[30%] w-[340px] h-[340px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle at center, rgba(184,224,208,0.2), transparent 68%)",
+          background: "radial-gradient(circle at center, rgba(96,165,250,0.10), transparent 68%)",
         }}
-        animate={{ x: [0, 12, 0], y: [0, -14, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        animate={{ x: [0, 14, 0], y: [0, -14, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
+      {/* Subtle dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.35]"
+        style={{
+          backgroundImage: "radial-gradient(rgba(96,165,250,0.14) 1px, transparent 1px)",
+          backgroundSize: "34px 34px",
+          maskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+        }}
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-20 pb-16">
         <motion.p
-          className="text-xs font-semibold text-[#8E8E93] tracking-[0.2em] uppercase mb-5"
+          className="text-xs font-semibold text-[#60A5FA] tracking-[0.2em] uppercase mb-5"
           {...fadeUp(0.2)}
         >
           {t.greeting}
         </motion.p>
 
         <motion.h1
-          className="text-[clamp(3rem,10vw,6.5rem)] font-bold tracking-[-0.03em] text-[#1D1D1F] leading-[1.02] mb-4"
+          className="text-[clamp(3rem,10vw,6.5rem)] font-bold tracking-[-0.03em] text-white leading-[1.02] mb-4"
           {...fadeUp(0.35)}
         >
           Alvaro Ferreira
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-2xl font-light bg-gradient-to-r from-[#6BBF9E] to-[#5BA8D4] bg-clip-text text-transparent mb-4 tracking-wide"
+          className="text-xl md:text-2xl font-light bg-gradient-to-r from-[#60A5FA] to-[#1B45FF] bg-clip-text text-transparent mb-4 tracking-wide"
           {...fadeUp(0.5)}
         >
           avalito
         </motion.p>
 
-        <motion.p
-          className="text-lg md:text-xl text-[#6E6E73] font-light mb-2"
-          {...fadeUp(0.6)}
-        >
+        <motion.p className="text-lg md:text-xl text-[#A7B0C2] font-light mb-2" {...fadeUp(0.6)}>
           {t.role}
         </motion.p>
 
         <motion.p
-          className="text-sm text-[#8E8E93] mb-10 max-w-sm mx-auto leading-relaxed"
+          className="text-sm text-[#707A8F] mb-8 max-w-md mx-auto leading-relaxed"
           {...fadeUp(0.7)}
         >
           {t.tagline}
         </motion.p>
 
+        {/* Venture pills */}
+        <motion.div className="flex flex-wrap gap-2.5 justify-center mb-10" {...fadeUp(0.78)}>
+          {[
+            { label: "S X S", logo: <SXSLogo size={18} /> },
+            { label: "JUVAK", logo: <JuvakLogo size={18} onDark /> },
+            { label: "Fútbol Para Todos", logo: <FPTLogo size={18} /> },
+          ].map((v) => (
+            <a
+              key={v.label}
+              href="#ventures"
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-[#C6CDDB] hover:border-[#3B82F6]/50 hover:bg-[#3B82F6]/10 hover:text-white transition-all duration-200"
+            >
+              {v.logo}
+              {v.label}
+            </a>
+          ))}
+        </motion.div>
+
         {/* CTAs */}
         <motion.div
           className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-10"
-          {...fadeUp(0.82)}
+          {...fadeUp(0.88)}
         >
           <a
-            href="#projects"
-            className="px-7 py-3 bg-[#1D1D1F] text-white text-sm font-medium rounded-full hover:bg-[#3a3a3d] active:scale-95 transition-all duration-300 hover:shadow-lg hover:shadow-black/10"
+            href="#ventures"
+            className="px-7 py-3 bg-gradient-to-r from-[#2563EB] to-[#1B45FF] text-white text-sm font-medium rounded-full hover:brightness-110 active:scale-95 transition-all duration-300 shadow-lg shadow-[#1B45FF]/25"
           >
             {t.cta1}
           </a>
           <a
-            href="#contact"
-            className="px-7 py-3 border border-black/15 text-[#1D1D1F] text-sm font-medium rounded-full hover:border-black/30 hover:bg-black/[0.04] active:scale-95 transition-all duration-300"
+            href="#about"
+            className="px-7 py-3 border border-white/15 text-white text-sm font-medium rounded-full hover:border-white/30 hover:bg-white/[0.05] active:scale-95 transition-all duration-300"
           >
             {t.cta2}
           </a>
         </motion.div>
 
         {/* Social */}
-        <motion.div className="flex gap-3 justify-center" {...fadeUp(0.95)}>
+        <motion.div className="flex gap-3 justify-center items-center" {...fadeUp(1)}>
           <a
             href="https://github.com/victoralvaroferreirajuarez-star"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-full border border-black/10 text-[#6E6E73] hover:text-[#1D1D1F] hover:border-black/20 hover:bg-black/[0.04] transition-all duration-200 hover:scale-110 active:scale-95"
+            className={socialBtn}
             aria-label="GitHub"
           >
             <GitHubIcon size={17} />
           </a>
+
+          {/* Discord: copies the username */}
+          <div className="relative">
+            <button
+              onClick={copyDiscord}
+              className={socialBtn}
+              aria-label={`Discord: ${DISCORD_USER}`}
+              title={`${t.discordHint}: ${DISCORD_USER}`}
+            >
+              <DiscordIcon size={17} />
+            </button>
+            <AnimatePresence>
+              {copied && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 4, scale: 0.95 }}
+                  className="absolute -top-11 left-1/2 -translate-x-1/2 whitespace-nowrap flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1B45FF] text-white text-xs font-medium shadow-lg shadow-[#1B45FF]/30"
+                >
+                  <Check size={12} />
+                  {t.copied} {DISCORD_USER}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           <a
-            href="https://www.linkedin.com/in/victor-alvaro-ferreira-juarez-321970322/"
+            href="https://www.instagram.com/avalowowo"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-full border border-black/10 text-[#6E6E73] hover:text-[#1D1D1F] hover:border-black/20 hover:bg-black/[0.04] transition-all duration-200 hover:scale-110 active:scale-95"
-            aria-label="LinkedIn"
+            className={socialBtn}
+            aria-label="Instagram"
           >
-            <LinkedInIcon size={17} />
+            <InstagramIcon size={17} />
           </a>
         </motion.div>
       </div>
 
       {/* Scroll cue */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#AEAEB2]"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#4C5568]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 0.8 }}

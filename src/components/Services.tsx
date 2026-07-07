@@ -27,8 +27,8 @@ const CONTENT = {
         description: "Conecta tus apps, emails y CRM con n8n o Make. Elimina tareas repetitivas y ahorra horas de trabajo al día.",
         price: "Desde $100",
         tag: "workflows",
-        color: "from-[#A8D5C2]/30 to-[#A8D5C2]/5",
-        accent: "#6BBF9E",
+        color: "from-[#60A5FA]/20 to-[#60A5FA]/5",
+        accent: "#60A5FA",
         details: ["Conexión entre apps (Gmail, Sheets, Notion…)", "Automatización de emails", "Sincronización de datos", "Alertas y notificaciones", "Flujos personalizados"],
       },
       {
@@ -37,8 +37,8 @@ const CONTENT = {
         description: "Asistente virtual inteligente con GPT o Claude para atención al cliente, soporte técnico o ventas.",
         price: "Desde $200",
         tag: "chatbot",
-        color: "from-[#A8C8E8]/30 to-[#A8C8E8]/5",
-        accent: "#5BA8D4",
+        color: "from-[#1B45FF]/25 to-[#1B45FF]/5",
+        accent: "#7FA8FF",
         details: ["IA entrenada con tu información", "Respuestas naturales y precisas", "Integración en web o app", "Soporte y ventas automáticas", "Mejora continua"],
       },
       {
@@ -47,7 +47,7 @@ const CONTENT = {
         description: "Conecta tus herramientas de ventas, contactos y seguimiento. Un solo lugar para gestionar todo tu negocio.",
         price: "Desde $120",
         tag: "crm",
-        color: "from-[#C8B8E8]/30 to-[#C8B8E8]/5",
+        color: "from-[#C8B8E8]/25 to-[#C8B8E8]/5",
         accent: "#9B8ED4",
         details: ["Centraliza contactos y clientes", "Seguimiento automático de ventas", "Conexión con email y calendario", "Reportes automáticos", "Pipeline de ventas"],
       },
@@ -96,8 +96,8 @@ const CONTENT = {
         description: "Connect your apps, emails and CRM with n8n or Make. Eliminate repetitive tasks and save hours of work every day.",
         price: "From $100",
         tag: "workflows",
-        color: "from-[#A8D5C2]/30 to-[#A8D5C2]/5",
-        accent: "#6BBF9E",
+        color: "from-[#60A5FA]/20 to-[#60A5FA]/5",
+        accent: "#60A5FA",
         details: ["App connections (Gmail, Sheets, Notion…)", "Email automation", "Data synchronization", "Alerts & notifications", "Custom workflow design"],
       },
       {
@@ -106,8 +106,8 @@ const CONTENT = {
         description: "Smart virtual assistant powered by GPT or Claude for customer service, technical support or sales.",
         price: "From $200",
         tag: "chatbot",
-        color: "from-[#A8C8E8]/30 to-[#A8C8E8]/5",
-        accent: "#5BA8D4",
+        color: "from-[#1B45FF]/25 to-[#1B45FF]/5",
+        accent: "#7FA8FF",
         details: ["Trained on your own data", "Natural, accurate responses", "Web or app integration", "Automated support & sales", "Continuous improvement"],
       },
       {
@@ -116,7 +116,7 @@ const CONTENT = {
         description: "Connect your sales tools, contacts and tracking in one single place to manage your entire business.",
         price: "From $120",
         tag: "crm",
-        color: "from-[#C8B8E8]/30 to-[#C8B8E8]/5",
+        color: "from-[#C8B8E8]/25 to-[#C8B8E8]/5",
         accent: "#9B8ED4",
         details: ["Centralize contacts & clients", "Automatic sales tracking", "Email & calendar sync", "Automated reports", "Sales pipeline setup"],
       },
@@ -183,7 +183,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-32 bg-[#FAFAFA]">
+    <section id="services" className="py-32 bg-[#070B14]">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
@@ -195,13 +195,13 @@ export default function Services() {
           viewport={{ once: true, margin: "-80px" }}
           className="mb-16"
         >
-          <p className="text-xs font-semibold text-[#6BBF9E] tracking-[0.18em] uppercase mb-3">
+          <p className="text-xs font-semibold text-[#60A5FA] tracking-[0.18em] uppercase mb-3">
             {t.label}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1D1D1F] tracking-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
             {t.title}
           </h2>
-          <p className="text-[#6E6E73] text-lg max-w-xl">{t.subtitle}</p>
+          <p className="text-[#8A93A6] text-lg max-w-xl">{t.subtitle}</p>
         </motion.div>
 
         {/* Service Cards */}
@@ -217,18 +217,18 @@ export default function Services() {
                 variants={fadeUp}
                 viewport={{ once: true, margin: "-60px" }}
                 onClick={() => setModal(service)}
-                className="cursor-pointer bg-white rounded-2xl p-7 border border-black/[0.06] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                className="cursor-pointer bg-white/[0.04] rounded-2xl p-7 border border-white/[0.07] hover:border-white/[0.15] hover:-translate-y-1 hover:bg-white/[0.06] transition-all duration-300 flex flex-col"
               >
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-5`}>
                   <Icon size={22} style={{ color: service.accent }} />
                 </div>
-                <h3 className="text-lg font-semibold text-[#1D1D1F] mb-2">{service.name}</h3>
-                <p className="text-[#6E6E73] text-sm leading-relaxed flex-1">{service.description}</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{service.name}</h3>
+                <p className="text-[#8A93A6] text-sm leading-relaxed flex-1">{service.description}</p>
                 <div className="mt-5 flex items-center justify-between">
-                  <span className="text-base font-bold bg-gradient-to-r from-[#6BBF9E] to-[#5BA8D4] bg-clip-text text-transparent">
+                  <span className="text-base font-bold bg-gradient-to-r from-[#60A5FA] to-[#1B45FF] bg-clip-text text-transparent">
                     {service.price}
                   </span>
-                  <span className="text-xs font-semibold text-[#6E6E73]">
+                  <span className="text-xs font-semibold text-[#8A93A6]">
                     {lang === "es" ? "Ver más →" : "Learn more →"}
                   </span>
                 </div>
@@ -248,7 +248,7 @@ export default function Services() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
                 className="fixed inset-0 z-50 flex items-center justify-center p-4"
-                style={{ backgroundColor: "rgba(0,0,0,0.7)" }}
+                style={{ backgroundColor: "rgba(0,0,0,0.75)" }}
                 onClick={() => setModal(null)}
               >
                 <motion.div
@@ -257,25 +257,24 @@ export default function Services() {
                   exit={{ opacity: 0, scale: 0.96, y: 16 }}
                   transition={{ duration: 0.25 }}
                   onClick={(e) => e.stopPropagation()}
-                  className="bg-white w-full max-w-lg shadow-2xl"
-                  style={{ borderRadius: 0 }}
+                  className="bg-[#0B101E] border border-white/10 w-full max-w-lg shadow-2xl rounded-2xl overflow-hidden"
                 >
                   {/* Modal header */}
-                  <div className="flex items-center justify-between px-8 pt-8 pb-6 border-b border-black/[0.06]">
+                  <div className="flex items-center justify-between px-8 pt-8 pb-6 border-b border-white/[0.07]">
                     <div className="flex items-center gap-4">
-                      <div className={`w-10 h-10 bg-gradient-to-br ${modal.color} flex items-center justify-center`}>
+                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${modal.color} flex items-center justify-center`}>
                         <Icon size={18} style={{ color: modal.accent }} />
                       </div>
                       <div>
                         <p className="text-xs font-semibold tracking-[0.15em] uppercase mb-0.5" style={{ color: modal.accent }}>
                           {lang === "es" ? "Servicio" : "Service"}
                         </p>
-                        <h3 className="text-xl font-bold text-[#1D1D1F]">{modal.name}</h3>
+                        <h3 className="text-xl font-bold text-white">{modal.name}</h3>
                       </div>
                     </div>
                     <button
                       onClick={() => setModal(null)}
-                      className="text-[#AEAEB2] hover:text-[#1D1D1F] transition-colors"
+                      className="text-[#5A6478] hover:text-white transition-colors"
                     >
                       <X size={20} />
                     </button>
@@ -283,20 +282,20 @@ export default function Services() {
 
                   {/* Modal body */}
                   <div className="px-8 py-6">
-                    <p className="text-[#6E6E73] text-sm leading-relaxed mb-6">{modal.description}</p>
-                    <p className="text-xs font-semibold text-[#AEAEB2] tracking-[0.15em] uppercase mb-3">
+                    <p className="text-[#8A93A6] text-sm leading-relaxed mb-6">{modal.description}</p>
+                    <p className="text-xs font-semibold text-[#5A6478] tracking-[0.15em] uppercase mb-3">
                       {lang === "es" ? "Qué incluye" : "What's included"}
                     </p>
                     <ul className="flex flex-col gap-3 mb-8">
                       {modal.details.map((d, j) => (
-                        <li key={j} className="flex items-center gap-3 text-sm text-[#3a3a3c]">
-                          <span className="w-1.5 h-1.5 flex-shrink-0" style={{ backgroundColor: modal.accent }} />
+                        <li key={j} className="flex items-center gap-3 text-sm text-[#C6CDDB]">
+                          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: modal.accent }} />
                           {d}
                         </li>
                       ))}
                     </ul>
                     <div className="flex items-center justify-between">
-                      <span className="text-xl font-bold bg-gradient-to-r from-[#6BBF9E] to-[#5BA8D4] bg-clip-text text-transparent">
+                      <span className="text-xl font-bold bg-gradient-to-r from-[#60A5FA] to-[#1B45FF] bg-clip-text text-transparent">
                         {modal.price}
                       </span>
                       <button
@@ -307,8 +306,7 @@ export default function Services() {
                             document.getElementById("service-form")?.scrollIntoView({ behavior: "smooth" });
                           }, 100);
                         }}
-                        className="text-sm font-semibold px-6 py-2.5 text-[#1D1D1F] hover:opacity-90 transition-opacity"
-                        style={{ background: `linear-gradient(135deg, #A8D5C2, #A8C8E8)`, borderRadius: 0 }}
+                        className="text-sm font-semibold px-6 py-2.5 rounded-full text-white bg-gradient-to-r from-[#2563EB] to-[#1B45FF] hover:brightness-110 transition-all"
                       >
                         {lang === "es" ? "Solicitar →" : "Request →"}
                       </button>
@@ -328,71 +326,71 @@ export default function Services() {
           custom={0.2}
           variants={fadeUp}
           viewport={{ once: true, margin: "-60px" }}
-          className="bg-[#111111] rounded-3xl p-8 md:p-12"
+          className="bg-[#0A0F1C] border border-white/[0.07] rounded-3xl p-8 md:p-12"
         >
           <div className="max-w-2xl mx-auto">
-            <p className="text-xs font-semibold text-[#6BBF9E] tracking-[0.18em] uppercase mb-3">
+            <p className="text-xs font-semibold text-[#60A5FA] tracking-[0.18em] uppercase mb-3">
               {lang === "es" ? "Contacto" : "Contact"}
             </p>
             <h3 className="text-3xl font-bold text-white tracking-tight mb-2">{t.form.title}</h3>
-            <p className="text-[#6E6E73] mb-8">{t.form.subtitle}</p>
+            <p className="text-[#8A93A6] mb-8">{t.form.subtitle}</p>
 
             {status === "success" ? (
-              <div className="flex items-center gap-3 bg-[#6BBF9E]/10 border border-[#6BBF9E]/30 rounded-2xl p-6">
-                <CheckCircle size={24} className="text-[#6BBF9E] flex-shrink-0" />
-                <p className="text-[#A8D5C2] font-medium">{t.form.success}</p>
+              <div className="flex items-center gap-3 bg-[#28C840]/10 border border-[#28C840]/30 rounded-2xl p-6">
+                <CheckCircle size={24} className="text-[#28C840] flex-shrink-0" />
+                <p className="text-[#8FE3A5] font-medium">{t.form.success}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-medium text-[#8E8E93] tracking-wide uppercase">{t.form.name}</label>
+                    <label className="text-xs font-medium text-[#8A93A6] tracking-wide uppercase">{t.form.name}</label>
                     <input
                       type="text"
                       required
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder={t.form.namePlaceholder}
-                      className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-[#6E6E73] text-sm focus:outline-none focus:border-[#6BBF9E]/50 transition-colors"
+                      className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-[#5A6478] text-sm focus:outline-none focus:border-[#3B82F6]/60 transition-colors"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-medium text-[#8E8E93] tracking-wide uppercase">{t.form.email}</label>
+                    <label className="text-xs font-medium text-[#8A93A6] tracking-wide uppercase">{t.form.email}</label>
                     <input
                       type="email"
                       required
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       placeholder={t.form.emailPlaceholder}
-                      className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-[#6E6E73] text-sm focus:outline-none focus:border-[#6BBF9E]/50 transition-colors"
+                      className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-[#5A6478] text-sm focus:outline-none focus:border-[#3B82F6]/60 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-medium text-[#8E8E93] tracking-wide uppercase">{t.form.service}</label>
+                  <label className="text-xs font-medium text-[#8A93A6] tracking-wide uppercase">{t.form.service}</label>
                   <select
                     required
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#6BBF9E]/50 transition-colors appearance-none"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#3B82F6]/60 transition-colors appearance-none"
                   >
-                    <option value="" className="bg-[#1D1D1F]">{t.form.selectService}</option>
+                    <option value="" className="bg-[#0B101E]">{t.form.selectService}</option>
                     {t.serviceOptions.map((opt) => (
-                      <option key={opt.value} value={opt.value} className="bg-[#1D1D1F]">{opt.label}</option>
+                      <option key={opt.value} value={opt.value} className="bg-[#0B101E]">{opt.label}</option>
                     ))}
                   </select>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-medium text-[#8E8E93] tracking-wide uppercase">{t.form.description}</label>
+                  <label className="text-xs font-medium text-[#8A93A6] tracking-wide uppercase">{t.form.description}</label>
                   <textarea
                     required
                     rows={4}
                     value={form.description}
                     onChange={(e) => setForm({ ...form, description: e.target.value })}
                     placeholder={t.form.descriptionPlaceholder}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-[#6E6E73] text-sm focus:outline-none focus:border-[#6BBF9E]/50 transition-colors resize-none"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-[#5A6478] text-sm focus:outline-none focus:border-[#3B82F6]/60 transition-colors resize-none"
                   />
                 </div>
 
@@ -403,7 +401,7 @@ export default function Services() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="mt-2 flex items-center justify-center gap-2 bg-gradient-to-r from-[#A8D5C2] to-[#A8C8E8] text-[#1D1D1F] font-semibold py-3.5 px-8 rounded-full hover:opacity-90 transition-opacity duration-200 disabled:opacity-60"
+                  className="mt-2 flex items-center justify-center gap-2 bg-gradient-to-r from-[#2563EB] to-[#1B45FF] text-white font-semibold py-3.5 px-8 rounded-full hover:brightness-110 transition-all duration-200 disabled:opacity-60 shadow-lg shadow-[#1B45FF]/20"
                 >
                   {status === "loading" ? (
                     <>

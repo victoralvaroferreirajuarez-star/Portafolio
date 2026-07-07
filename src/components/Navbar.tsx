@@ -6,12 +6,12 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const NAV = {
   es: {
-    links: ["Inicio", "Sobre Mí", "Habilidades", "Proyectos", "Servicios", "Contacto"],
-    hrefs: ["#hero", "#about", "#skills", "#projects", "#services", "#contact"],
+    links: ["Inicio", "Emprendimientos", "Sobre Mí", "Trayectoria", "Stack", "Servicios", "Contacto"],
+    hrefs: ["#hero", "#ventures", "#about", "#timeline", "#stack", "#services", "#contact"],
   },
   en: {
-    links: ["Home", "About", "Skills", "Projects", "Services", "Contact"],
-    hrefs: ["#hero", "#about", "#skills", "#projects", "#services", "#contact"],
+    links: ["Home", "Ventures", "About", "Journey", "Stack", "Services", "Contact"],
+    hrefs: ["#hero", "#ventures", "#about", "#timeline", "#stack", "#services", "#contact"],
   },
 };
 
@@ -32,7 +32,7 @@ export default function Navbar() {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-2xl border-b border-black/[0.06] shadow-sm py-3"
+          ? "bg-[#05070D]/75 backdrop-blur-2xl border-b border-white/[0.06] shadow-lg shadow-black/20 py-3"
           : "bg-transparent py-5"
       }`}
       initial={{ y: -80, opacity: 0 }}
@@ -43,18 +43,18 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          className="text-base font-semibold tracking-tight bg-gradient-to-r from-[#6BBF9E] to-[#5BA8D4] bg-clip-text text-transparent"
+          className="text-base font-semibold tracking-tight bg-gradient-to-r from-[#60A5FA] to-[#1B45FF] bg-clip-text text-transparent"
         >
           avalito
         </a>
 
         {/* Desktop links */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-6">
           {links.map((link, i) => (
             <a
               key={i}
               href={hrefs[i]}
-              className="text-sm text-[#6E6E73] hover:text-[#1D1D1F] transition-colors duration-200 font-medium"
+              className="text-sm text-[#8A93A6] hover:text-white transition-colors duration-200 font-medium"
             >
               {link}
             </a>
@@ -65,7 +65,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setLang(lang === "es" ? "en" : "es")}
-            className="text-xs font-semibold px-3 py-1.5 rounded-full border border-black/12 hover:border-black/25 text-[#6E6E73] hover:text-[#1D1D1F] transition-all duration-200 tracking-wide"
+            className="text-xs font-semibold px-3 py-1.5 rounded-full border border-white/15 hover:border-white/30 text-[#8A93A6] hover:text-white transition-all duration-200 tracking-wide"
           >
             {lang === "es" ? "EN" : "ES"}
           </button>
@@ -77,17 +77,17 @@ export default function Navbar() {
             aria-label="Menu"
           >
             <span
-              className={`block h-[1.5px] w-5 bg-[#1D1D1F] origin-center transition-all duration-300 ${
+              className={`block h-[1.5px] w-5 bg-white origin-center transition-all duration-300 ${
                 menuOpen ? "rotate-45 translate-y-[6.5px]" : ""
               }`}
             />
             <span
-              className={`block h-[1.5px] w-5 bg-[#1D1D1F] transition-all duration-200 ${
+              className={`block h-[1.5px] w-5 bg-white transition-all duration-200 ${
                 menuOpen ? "opacity-0 scale-x-0" : ""
               }`}
             />
             <span
-              className={`block h-[1.5px] w-5 bg-[#1D1D1F] origin-center transition-all duration-300 ${
+              className={`block h-[1.5px] w-5 bg-white origin-center transition-all duration-300 ${
                 menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
               }`}
             />
@@ -103,7 +103,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-white/95 backdrop-blur-2xl border-t border-black/5"
+            className="md:hidden overflow-hidden bg-[#05070D]/95 backdrop-blur-2xl border-t border-white/[0.06]"
           >
             <div className="px-6 py-5 flex flex-col gap-4">
               {links.map((link, i) => (
@@ -111,7 +111,7 @@ export default function Navbar() {
                   key={i}
                   href={hrefs[i]}
                   onClick={() => setMenuOpen(false)}
-                  className="text-sm font-medium text-[#1D1D1F] py-0.5"
+                  className="text-sm font-medium text-white py-0.5"
                 >
                   {link}
                 </a>

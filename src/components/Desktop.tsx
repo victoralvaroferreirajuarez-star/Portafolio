@@ -16,7 +16,6 @@ import {
   JuvakLogo,
   FPTLogo,
   SXSLogo,
-  BananitaLogo,
   GitHubIcon,
   DiscordIcon,
   InstagramIcon,
@@ -24,7 +23,7 @@ import {
 
 const DISCORD_USER = "avalouw.";
 
-type WindowId = "sxs" | "juvak" | "fpt" | "bananita";
+type WindowId = "sxs" | "juvak" | "fpt";
 type WinState = "open" | "min" | "closed";
 
 type Venture = {
@@ -33,28 +32,30 @@ type Venture = {
   name: string;
   logo: React.ReactNode;
   dockLogo: React.ReactNode;
+  miniLogo?: React.ReactNode;
   role: { es: string; en: string };
   desc: { es: string; en: string };
   web?: { label: string; href: string };
   ig?: { label: string; href: string };
-  status?: { es: string; en: string };
+  kids?: WindowId[];
+  preview?: string;
   pos: { left: string; top: string };
 };
 
 const VENTURES: Venture[] = [
   {
     id: "sxs",
-    app: "sxs.app",
+    app: "sxs — matriz",
     name: "S X S",
     logo: <SXSLogo size={44} />,
     dockLogo: <SXSLogo size={40} />,
-    role: { es: "Co-Founder · Núcleo", en: "Co-Founder · Core" },
+    role: { es: "La matriz · Co-Founder", en: "The parent · Co-Founder" },
     desc: {
-      es: "El paraguas. La empresa núcleo desde donde nacen y crecen todos los demás negocios.",
-      en: "The umbrella. The core company where every other business is born and grows.",
+      es: "S X S no es una tienda: es la empresa madre detrás de todo. La cara del grupo — de aquí nacen y crecen los demás negocios.",
+      en: "S X S isn't a store: it's the parent company behind everything. The face of the group — every other business is born and grows from here.",
     },
-    status: { es: "En construcción", en: "In the works" },
-    pos: { left: "60%", top: "5%" },
+    kids: ["juvak", "fpt"],
+    pos: { left: "58%", top: "6%" },
   },
   {
     id: "juvak",
@@ -70,6 +71,11 @@ const VENTURES: Venture[] = [
         <JuvakLogo size={30} />
       </span>
     ),
+    miniLogo: (
+      <span className="flex items-center justify-center w-5 h-5 rounded-md bg-white">
+        <JuvakLogo size={14} />
+      </span>
+    ),
     role: { es: "Founder", en: "Founder" },
     desc: {
       es: "Marca de relojes. Diseño y venta de relojes con identidad propia.",
@@ -77,7 +83,8 @@ const VENTURES: Venture[] = [
     },
     web: { label: "juvak.store", href: "https://juvak.store" },
     ig: { label: "@juvak.es", href: "https://www.instagram.com/juvak.es" },
-    pos: { left: "4%", top: "10%" },
+    preview: "/previews/juvak.jpg",
+    pos: { left: "4%", top: "8%" },
   },
   {
     id: "fpt",
@@ -85,6 +92,7 @@ const VENTURES: Venture[] = [
     name: "Fútbol Para Todos",
     logo: <FPTLogo size={44} />,
     dockLogo: <FPTLogo size={40} />,
+    miniLogo: <FPTLogo size={20} />,
     role: { es: "Co-Founder", en: "Co-Founder" },
     desc: {
       es: "Camisetas de fútbol para todos los hinchas. El fútbol no entiende de fronteras.",
@@ -92,21 +100,8 @@ const VENTURES: Venture[] = [
     },
     web: { label: "futbolparatodos.store", href: "https://futbolparatodos.store" },
     ig: { label: "@fpt.store", href: "https://www.instagram.com/fpt.store" },
-    pos: { left: "32%", top: "36%" },
-  },
-  {
-    id: "bananita",
-    app: "bananita.app",
-    name: "BananitaStore",
-    logo: <BananitaLogo size={44} />,
-    dockLogo: <BananitaLogo size={40} />,
-    role: { es: "Founder · Live", en: "Founder · Live" },
-    desc: {
-      es: "Marketplace de mascotas de Adopt Me (Roblox). Compra, vende y calcula el valor de tus pets.",
-      en: "Adopt Me (Roblox) pet marketplace. Buy, sell and calculate your pets' value.",
-    },
-    web: { label: "bananitastore.shop", href: "https://www.bananitastore.shop" },
-    pos: { left: "63%", top: "47%" },
+    preview: "/previews/fpt.jpg",
+    pos: { left: "35%", top: "16%" },
   },
 ];
 
@@ -115,29 +110,43 @@ const CONTENT = {
     label: "Emprendimientos",
     title: "Mi escritorio.",
     subtitle:
-      "S X S es el núcleo — de ahí nacen JUVAK y Fútbol Para Todos. Arrastra las ventanas, ciérralas, minimízalas y reábrelas desde el dock. Es un escritorio de verdad.",
+      "S X S es la matriz — la empresa detrás de todo. De ella nacen JUVAK y Fútbol Para Todos. Arrastra las ventanas, ciérralas, minimízalas y reábrelas desde el dock. Es un escritorio de verdad.",
     visit: "Visitar web",
     allClosed: "Todo cerrado. Reabre las apps desde el dock 👇",
     copied: "¡Copiado!",
+    born: "De aquí nacen",
     menus: ["Archivo", "Editar", "Ver", "Ir"],
-    menuTitle: "Alvaro Ferreira — Emprendimientos",
+    menuTitle: "S X S — Alvaro Ferreira",
   },
   en: {
     label: "Ventures",
     title: "My desktop.",
     subtitle:
-      "S X S is the core — JUVAK and Fútbol Para Todos grow from it. Drag the windows, close them, minimize them and reopen them from the dock. It's a real desktop.",
+      "S X S is the parent company — the business behind everything. JUVAK and Fútbol Para Todos are born from it. Drag the windows, close them, minimize them and reopen them from the dock. It's a real desktop.",
     visit: "Visit website",
     allClosed: "Everything's closed. Reopen the apps from the dock 👇",
     copied: "Copied!",
+    born: "Born from here",
     menus: ["File", "Edit", "View", "Go"],
-    menuTitle: "Alvaro Ferreira — Ventures",
+    menuTitle: "S X S — Alvaro Ferreira",
   },
 };
 
 /* ---------- Window content (shared desktop/mobile) ---------- */
 
-function VentureContent({ v, lang, visit }: { v: Venture; lang: "es" | "en"; visit: string }) {
+function VentureContent({
+  v,
+  lang,
+  visit,
+  born,
+  onOpenKid,
+}: {
+  v: Venture;
+  lang: "es" | "en";
+  visit: string;
+  born: string;
+  onOpenKid?: (id: WindowId) => void;
+}) {
   return (
     <div className="p-5">
       <div className="flex items-center gap-3.5 mb-4">
@@ -150,9 +159,27 @@ function VentureContent({ v, lang, visit }: { v: Venture; lang: "es" | "en"; vis
         </div>
       </div>
 
+      {/* Live site preview */}
+      {v.preview && v.web && (
+        <a
+          href={v.web.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group/prev block mb-4 rounded-lg overflow-hidden border border-white/10 hover:border-[#3B82F6]/50 transition-colors"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={v.preview}
+            alt={`Preview — ${v.name}`}
+            loading="lazy"
+            className="w-full aspect-[16/10] max-h-72 object-cover object-top group-hover/prev:scale-[1.02] group-hover/prev:opacity-90 transition-all duration-300"
+          />
+        </a>
+      )}
+
       <p className="text-sm text-[#9AA4B8] leading-relaxed mb-5">{v.desc[lang]}</p>
 
-      {v.web || v.ig ? (
+      {(v.web || v.ig) && (
         <div className="flex flex-wrap gap-2">
           {v.web && (
             <a
@@ -177,13 +204,30 @@ function VentureContent({ v, lang, visit }: { v: Venture; lang: "es" | "en"; vis
             </a>
           )}
         </div>
-      ) : (
-        v.status && (
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-dashed border-white/20 text-xs text-[#8A93A6]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FEBC2E] animate-pulse" />
-            {v.status[lang]}
-          </span>
-        )
+      )}
+
+      {v.kids && (
+        <div>
+          <p className="text-[10px] font-semibold tracking-[0.15em] uppercase text-[#5A6478] mb-2.5">
+            {born} ↓
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {v.kids.map((kidId) => {
+              const kid = VENTURES.find((x) => x.id === kidId)!;
+              return (
+                <button
+                  key={kidId}
+                  onClick={() => onOpenKid?.(kidId)}
+                  disabled={!onOpenKid}
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-[#C6CDDB] enabled:hover:border-[#3B82F6]/50 enabled:hover:text-white enabled:active:scale-95 transition-all duration-200 disabled:cursor-default"
+                >
+                  {kid.miniLogo}
+                  {kid.name}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       )}
     </div>
   );
@@ -240,6 +284,7 @@ function MacWindow({
   v,
   lang,
   visit,
+  born,
   z,
   maximized,
   constraintsRef,
@@ -247,10 +292,12 @@ function MacWindow({
   onMin,
   onMax,
   onFocus,
+  onOpenKid,
 }: {
   v: Venture;
   lang: "es" | "en";
   visit: string;
+  born: string;
   z: number;
   maximized: boolean;
   constraintsRef: React.RefObject<HTMLDivElement | null>;
@@ -258,6 +305,7 @@ function MacWindow({
   onMin: () => void;
   onMax: () => void;
   onFocus: () => void;
+  onOpenKid: (id: WindowId) => void;
 }) {
   const dragControls = useDragControls();
 
@@ -276,7 +324,9 @@ function MacWindow({
       exit={{ opacity: 0, scale: 0.5, y: 180, transition: { duration: 0.28, ease: "easeIn" } }}
       transition={{ duration: 0.45, ease: [0.6, 0, 0.05, 1] }}
       className={`absolute rounded-xl overflow-hidden border border-white/10 bg-[#0B101E]/90 backdrop-blur-2xl shadow-2xl shadow-black/50 ${
-        maximized ? "inset-4 md:inset-6 w-auto" : "w-[320px] xl:w-[350px]"
+        maximized
+          ? "inset-3 md:inset-5 w-auto h-auto flex flex-col"
+          : "w-[320px] xl:w-[350px]"
       }`}
       style={maximized ? { zIndex: z } : { left: v.pos.left, top: v.pos.top, zIndex: z }}
     >
@@ -285,7 +335,7 @@ function MacWindow({
         onPointerDown={(e) => {
           if (!maximized) dragControls.start(e);
         }}
-        className={`flex items-center gap-3 h-9 px-3.5 bg-white/[0.04] border-b border-white/[0.06] select-none ${
+        className={`flex items-center gap-3 h-9 px-3.5 bg-white/[0.04] border-b border-white/[0.06] select-none flex-shrink-0 ${
           maximized ? "" : "cursor-grab active:cursor-grabbing"
         }`}
         style={{ touchAction: "none" }}
@@ -296,7 +346,9 @@ function MacWindow({
         </span>
       </div>
 
-      <VentureContent v={v} lang={lang} visit={visit} />
+      <div className={maximized ? "flex-1 min-h-0 overflow-y-auto" : ""}>
+        <VentureContent v={v} lang={lang} visit={visit} born={born} onOpenKid={onOpenKid} />
+      </div>
     </motion.div>
   );
 }
@@ -387,9 +439,8 @@ export default function Desktop() {
     sxs: "open",
     juvak: "open",
     fpt: "open",
-    bananita: "open",
   });
-  const [zOrder, setZOrder] = useState<WindowId[]>(["sxs", "bananita", "fpt", "juvak"]);
+  const [zOrder, setZOrder] = useState<WindowId[]>(["juvak", "fpt", "sxs"]);
   const [maximized, setMaximized] = useState<WindowId | null>(null);
   const [copied, setCopied] = useState(false);
 
@@ -507,6 +558,12 @@ export default function Desktop() {
                 backgroundSize: "28px 28px",
               }}
             />
+            {/* S X S watermark — the whole desktop belongs to the parent company */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+              <span className="text-[150px] font-black tracking-tight text-white/[0.03] leading-none">
+                S×S
+              </span>
+            </div>
 
             {allClosed && (
               <div className="absolute inset-0 flex items-center justify-center">
@@ -521,6 +578,8 @@ export default function Desktop() {
                   v={v}
                   lang={lang}
                   visit={t.visit}
+                  born={t.born}
+                  onOpenKid={(id) => setWin(id, "open")}
                   z={10 + zOrder.indexOf(v.id)}
                   maximized={maximized === v.id}
                   constraintsRef={constraintsRef}
@@ -577,7 +636,7 @@ export default function Desktop() {
                   {v.app}
                 </span>
               </div>
-              <VentureContent v={v} lang={lang} visit={t.visit} />
+              <VentureContent v={v} lang={lang} visit={t.visit} born={t.born} />
             </motion.div>
           ))}
 
